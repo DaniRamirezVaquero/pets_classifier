@@ -3,6 +3,9 @@ import joblib
 import pandas as pd
 import json
 
+# Configuración de la página
+st.set_page_config(page_title="PetClassifier", page_icon="🐱")
+
 st.title('PetClassifier 🐶🐱')
 st.subheader('Clasificador de mascotas')
 
@@ -11,8 +14,8 @@ st.image("./images/image.png", use_container_width=True)
 # Carga el modelo y las asignaciones para el color de ojos y el largo del pelo
 model = joblib.load('./model/pets_cls_model.joblib')
 with open('./model/category_mapping.json', 'r') as f:
-    category_mapping = json.load(f)
-    
+  category_mapping = json.load(f)
+  
 # Extraemos los valores categoricos
 eye_color_values = category_mapping['eye_color']
 fur_length_values = category_mapping['fur_length']
@@ -24,16 +27,16 @@ weight = st.number_input('Peso (kg)', min_value=0.1, max_value=100.0, placeholde
 height = st.number_input('Altura (cm)', min_value=10.0, max_value=100.0, placeholder='Altura en cm', value=None)
 
 eye_color_options = {
-    'Azul': 'Blue',
-    'Marrón': 'Brown',
-    'Gris': 'Gray',
-    'Verde': 'Green'
+  'Azul': 'Blue',
+  'Marrón': 'Brown',
+  'Gris': 'Gray',
+  'Verde': 'Green'
 }
 
 fur_length_options = {
-    'Largo': 'Long',
-    'Medio': 'Medium',
-    'Corto': 'Short'
+  'Largo': 'Long',
+  'Medio': 'Medium',
+  'Corto': 'Short'
 }
 
 eye_color = st.selectbox('Color de ojos', list(eye_color_options.keys()), index=None, placeholder='Selecciona un color de ojos')
@@ -58,15 +61,15 @@ if st.button('Clasificar'):
 
   # Diccionario para mapear las predicciones a emojis y nombres en español
   animal_emojis = {
-    'cat': '🐱',
-    'dog': '🐶',
-    'rabbit': '🐰'
+  'cat': '🐱',
+  'dog': '🐶',
+  'rabbit': '🐰'
   }
 
   animal_names_es = {
-    'cat': 'gato',
-    'dog': 'perro',
-    'rabbit': 'conejo'
+  'cat': 'gato',
+  'dog': 'perro',
+  'rabbit': 'conejo'
   }
 
   # Realizamos la predicción
